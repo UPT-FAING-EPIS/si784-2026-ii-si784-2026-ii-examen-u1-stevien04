@@ -33,13 +33,19 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-if (true)
+app.UseCors();
+app.UseAuthorization();
+app.MapControllers();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseCors();
-app.UseAuthorization();
-app.MapControllers();
+app.MapFallbackToFile("index.html");
+
 app.Run();
