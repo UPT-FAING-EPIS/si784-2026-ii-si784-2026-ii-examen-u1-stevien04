@@ -21,8 +21,8 @@ jobs:
         run: dotnet tool install --global dotnet-sonarscanner
       - name: Build and analyze
         env:
-          SONAR_TOKEN: ca92cc8b49eca4835eba686a8200d81c1e08323d
-          SONAR_HOST_URL: http://31.220.88.80:82
+          SONAR_TOKEN: ca92cc8b49eca4835eba686a900000d81c1e08323d
+          SONAR_HOST_URL: http://31.220.88.80:9000
         run: |
           dotnet-sonarscanner begin /k:"nannyapp" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.token="$SONAR_TOKEN"
           dotnet build NannyApp.sln
