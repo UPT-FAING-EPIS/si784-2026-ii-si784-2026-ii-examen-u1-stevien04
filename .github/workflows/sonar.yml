@@ -1,0 +1,29 @@
+name: SonarQube Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sonar:
+    name: SonarQube Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ca92cc8b49eca4835eba686a8200d81c1e08323d
+          SONAR_HOST_URL: http://31.220.88.80:82
+        run: |
+          dotnet-sonarscanner begin /k:"nannyapp" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.token="$SONAR_TOKEN"
+          dotnet build NannyApp.sln
+          dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"

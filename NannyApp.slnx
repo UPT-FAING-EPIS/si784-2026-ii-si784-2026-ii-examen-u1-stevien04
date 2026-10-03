@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NannyApp.API/NannyApp.API.csproj" />
+  <Project Path="NannyApp.Tests/NannyApp.Tests.csproj" />
+</Solution>
