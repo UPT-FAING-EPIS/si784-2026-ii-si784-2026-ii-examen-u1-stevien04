@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NannyApp.API.Data;
 using NannyApp.API.Models;
 
@@ -27,8 +27,9 @@ using (var scope = app.Services.CreateScope())
     context.Database.EnsureCreated();
     if (!context.Babysitters.Any())
     {
-        context.Babysitters.Add(new Babysitter { Id = Guid.NewGuid(), Name = "Maria Garcia", ExperienceYears = 5, HourlyRate = 15.0m, Rating = 4.8, Availability = "M-F" });
-        context.Babysitters.Add(new Babysitter { Id = Guid.NewGuid(), Name = "Laura Lopez", ExperienceYears = 3, HourlyRate = 12.0m, Rating = 4.5, Availability = "Weekends" });
+        context.Babysitters.Add(new Babysitter { Id = Guid.NewGuid(), Name = "Maria Garcia", ExperienceYears = 5, HourlyRate = 15.0m, Rating = 4.8, Availability = "M-F", Certifications = "Primeros Auxilios, RCP", Location = "Centro" });
+        context.Babysitters.Add(new Babysitter { Id = Guid.NewGuid(), Name = "Laura Lopez", ExperienceYears = 3, HourlyRate = 12.0m, Rating = 4.5, Availability = "Fines de semana", Certifications = "Cuidado Infantil", Location = "Norte" });
+        context.Babysitters.Add(new Babysitter { Id = Guid.NewGuid(), Name = "Ana Martinez", ExperienceYears = 7, HourlyRate = 20.0m, Rating = 5.0, Availability = "M-F", Certifications = "Educación Inicial, RCP", Location = "Sur" });
         context.SaveChanges();
     }
 }

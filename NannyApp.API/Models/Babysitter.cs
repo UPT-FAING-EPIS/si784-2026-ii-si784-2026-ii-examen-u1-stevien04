@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace NannyApp.API.Models
 {
@@ -10,5 +10,7 @@ namespace NannyApp.API.Models
         public decimal HourlyRate { get; set; }
         public double Rating { get; set; }
         public string Availability { get; set; }
+        public string Certifications { get; set; }
+        public string Location { get; set; }
     }
 }
