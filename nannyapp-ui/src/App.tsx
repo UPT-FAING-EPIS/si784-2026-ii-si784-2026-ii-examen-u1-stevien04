@@ -29,7 +29,7 @@ function App() {
       .then(data => setBabysitters(data))
       .catch(err => console.error(err));
 
-    fetch(/api/bookings?userId= + userId)
+    fetch('/api/bookings?userId=' + userId)
       .then(res => res.json())
       .then(data => setBookings(data))
       .catch(err => console.error(err));
@@ -67,7 +67,7 @@ function App() {
             <h3>{b.name}</h3>
             <p>Experiencia: {b.experienceYears} años</p>
             <p>Disponibilidad: {b.availability}</p>
-            <p>Tarifa: /h</p>
+            <p>Tarifa: ${b.hourlyRate}/h</p>
             <p>Rating: {b.rating}</p>
             <button onClick={() => bookNanny(b.id)}>Reservar</button>
           </div>
