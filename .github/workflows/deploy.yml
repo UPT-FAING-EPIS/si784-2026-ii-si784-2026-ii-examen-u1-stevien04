@@ -10,5 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Deploy App
-      run: echo "Deploying..."
+    - name: Deploy to VPS
+      run: |
+        sudo apt-get install -y sshpass
+        sshpass -p 'Upt2026' ssh -o StrictHostKeyChecking=no root@31.220.88.80 << 'EOF'
+          if [ ! -d "si784-2026-ii-si784-2026-ii-examen-u1-stevien04" ]; then
+            git clone https://github.com/UPT-FAING-EPIS/si784-2026-ii-si784-2026-ii-examen-u1-stevien04.git
+          fi
+          cd si784-2026-ii-si784-2026-ii-examen-u1-stevien04
+          git pull origin main
+          docker build -t nannyapp:latest .
+          docker stop nannyapp || true
+          docker rm nannyapp || true
+          docker run -d -p 82:8080 --name nannyapp nannyapp:latest
+        EOF
