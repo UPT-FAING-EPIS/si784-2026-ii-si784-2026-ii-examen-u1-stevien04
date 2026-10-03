@@ -25,5 +25,5 @@ jobs:
           SONAR_HOST_URL: http://31.220.88.80:9000
         run: |
           dotnet-sonarscanner begin /k:"nannyapp" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.token="$SONAR_TOKEN"
-          dotnet build NannyApp.sln
+          dotnet build NannyApp.API/NannyApp.API.csproj
           dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
