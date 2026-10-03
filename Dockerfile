@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
 WORKDIR /app
 EXPOSE 8080
 
@@ -9,7 +9,7 @@ RUN npm ci
 COPY nannyapp-ui/ ./
 RUN npm run build
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 WORKDIR /src
 COPY ["NannyApp.API/NannyApp.API.csproj", "NannyApp.API/"]
 RUN dotnet restore "NannyApp.API/NannyApp.API.csproj"
